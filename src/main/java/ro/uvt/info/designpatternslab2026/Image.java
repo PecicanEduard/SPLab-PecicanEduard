@@ -1,22 +1,24 @@
 package ro.uvt.info.designpatternslab2026;
 
-public class Image implements Element {
-    private String url;
+public class Image extends Element {
+    private String imageName;
 
-    public Image(String url) {
-        this.url = url;
+    public Image(String imageName) {
+        this.imageName = imageName;
     }
 
     @Override
     public void print() {
-        System.out.println("Image with name:" + url);
+        System.out.println("Image with name: " + imageName);
     }
 
     @Override
-    public void add(Element e) {}
+    public void add(Element e) {
+    }
 
     @Override
-    public void remove(Element e) {}
+    public void remove(Element e) {
+    }
 
     @Override
     public Element get(int index) {

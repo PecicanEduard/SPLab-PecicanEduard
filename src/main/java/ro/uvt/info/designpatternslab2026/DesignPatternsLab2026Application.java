@@ -7,8 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DesignPatternsLab2026Application {
 
     public static void main(String[] args) {
-        // SpringApplication.run(DesignPatternsLab2026Application.class, args);
-
         Book noapteBuna = new Book("Noapte buna, copii!");
         Author rpGheo = new Author("Radu Pavel Gheo");
         noapteBuna.addAuthor(rpGheo);
