@@ -38,4 +38,12 @@ public class Section extends Element {
     public Element get(int index) {
         return children.get(index);
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitSection(this);
+        for (Element child : children) {
+            child.accept(visitor);
+        }
+    }
 }

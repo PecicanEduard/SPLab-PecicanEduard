@@ -7,6 +7,7 @@ public class ImageProxy extends Element {
     public ImageProxy(String url) {
         this.url = url;
     }
+
     private Image loadImage() {
         if (realImage == null) {
             realImage = new Image(url);
@@ -28,5 +29,10 @@ public class ImageProxy extends Element {
     @Override
     public Element get(int index) {
         return null;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImageProxy(this);
     }
 }

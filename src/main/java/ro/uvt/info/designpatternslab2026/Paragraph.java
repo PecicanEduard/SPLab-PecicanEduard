@@ -7,6 +7,7 @@ public class Paragraph extends Element {
     public Paragraph(String text) {
         this.text = text;
     }
+
     public void setAlignStrategy(AlignStrategy textAlignment) {
         this.textAlignment = textAlignment;
     }
@@ -21,15 +22,18 @@ public class Paragraph extends Element {
     }
 
     @Override
-    public void add(Element e) {
-    }
+    public void add(Element e) {}
 
     @Override
-    public void remove(Element e) {
-    }
+    public void remove(Element e) {}
 
     @Override
     public Element get(int index) {
         return null;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitParagraph(this);
     }
 }

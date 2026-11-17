@@ -29,4 +29,9 @@ public class Image extends Element {
     public Element get(int index) {
         return null;
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImage(this);
+    }
 }
