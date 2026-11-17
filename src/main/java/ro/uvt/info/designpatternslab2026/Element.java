@@ -1,7 +1,15 @@
 package ro.uvt.info.designpatternslab2026;
 
-public abstract class Element {
+import jakarta.persistence.*;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Element {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Transient
     private Element parent = null;
 
     public Element getParent() {

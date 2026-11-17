@@ -1,11 +1,23 @@
 package ro.uvt.info.designpatternslab2026;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Transient;
+
+@Entity
 public class ImageProxy extends Element {
     private String url;
+
+    @Transient
     private Image realImage;
+
+    public ImageProxy() {}
 
     public ImageProxy(String url) {
         this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     private Image loadImage() {

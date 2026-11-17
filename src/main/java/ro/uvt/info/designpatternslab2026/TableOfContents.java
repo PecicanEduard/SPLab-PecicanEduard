@@ -1,6 +1,11 @@
 package ro.uvt.info.designpatternslab2026;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class TableOfContents extends Element {
+
+    public TableOfContents() {}
 
     @Override
     public void print() {

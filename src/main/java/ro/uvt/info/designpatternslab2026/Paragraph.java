@@ -1,8 +1,16 @@
 package ro.uvt.info.designpatternslab2026;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Transient;
+
+@Entity
 public class Paragraph extends Element {
     private String text;
+
+    @Transient
     private AlignStrategy textAlignment;
+
+    public Paragraph() {}
 
     public Paragraph(String text) {
         this.text = text;

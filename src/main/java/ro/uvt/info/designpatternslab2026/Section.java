@@ -1,14 +1,30 @@
 package ro.uvt.info.designpatternslab2026;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Section extends Element {
     private String title;
+
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Element> children = new ArrayList<>();
+
+    public Section() {}
 
     public Section(String title) {
         this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public List<Element> getChildren() {
+        return children;
     }
 
     @Override

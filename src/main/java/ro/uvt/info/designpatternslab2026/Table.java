@@ -1,7 +1,12 @@
 package ro.uvt.info.designpatternslab2026;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Table extends Element {
     private String title;
+
+    public Table() {}
 
     public Table(String title) {
         this.title = title;

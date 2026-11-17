@@ -1,9 +1,13 @@
 package ro.uvt.info.designpatternslab2026;
 
+import jakarta.persistence.Entity;
 import java.util.concurrent.TimeUnit;
 
+@Entity
 public class Image extends Element {
     private String imageName;
+
+    public Image() {}
 
     public Image(String imageName) {
         this.imageName = imageName;

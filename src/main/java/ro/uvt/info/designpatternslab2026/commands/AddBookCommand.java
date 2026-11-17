@@ -1,8 +1,9 @@
 package ro.uvt.info.designpatternslab2026.commands;
 
+import ro.uvt.info.designpatternslab2026.Book;
 import ro.uvt.info.designpatternslab2026.services.BooksService;
 
-public class AddBookCommand implements Command<String> {
+public class AddBookCommand implements Command<Book> {
     private final BooksService booksService;
 
     public AddBookCommand(BooksService booksService) {
@@ -10,7 +11,7 @@ public class AddBookCommand implements Command<String> {
     }
 
     @Override
-    public String execute() {
+    public Book execute() {
         return booksService.addBook();
     }
 }

@@ -1,18 +1,19 @@
 package ro.uvt.info.designpatternslab2026.commands;
 
+import ro.uvt.info.designpatternslab2026.Book;
 import ro.uvt.info.designpatternslab2026.services.BooksService;
 
-public class UpdateBookCommand implements Command<String> {
+public class UpdateBookCommand implements Command<Book> {
     private final BooksService booksService;
-    private final String id;
+    private final Long id;
 
-    public UpdateBookCommand(BooksService booksService, String id) {
+    public UpdateBookCommand(BooksService booksService, Long id) {
         this.booksService = booksService;
         this.id = id;
     }
 
     @Override
-    public String execute() {
+    public Book execute() {
         return booksService.updateBook(id);
     }
 }

@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ro.uvt.info.designpatternslab2026.Book;
 import ro.uvt.info.designpatternslab2026.commands.*;
 import ro.uvt.info.designpatternslab2026.services.BooksService;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -23,20 +25,20 @@ public class BooksController {
     }
 
     @GetMapping
-    public String getAllBooks() {
-        Command<String> command = new GetAllBooksCommand(booksService);
+    public List<Book> getAllBooks() {
+        Command<List<Book>> command = new GetAllBooksCommand(booksService);
         return command.execute();
     }
 
     @GetMapping("/{id}")
-    public String getBook(@PathVariable String id) {
-        Command<String> command = new GetBookCommand(booksService, id);
+    public Book getBook(@PathVariable Long id) {
+        Command<Book> command = new GetBookCommand(booksService, id);
         return command.execute();
     }
 
     @PostMapping
     public ResponseEntity<String> createBook() {
-        Command<String> command = new AddBookCommand(booksService);
+        Command<Book> command = new AddBookCommand(booksService);
 
         executorService.submit(() -> {
             try {
@@ -51,13 +53,13 @@ public class BooksController {
     }
 
     @PutMapping("/{id}")
-    public String updateBook(@PathVariable String id) {
-        Command<String> command = new UpdateBookCommand(booksService, id);
+    public Book updateBook(@PathVariable Long id) {
+        Command<Book> command = new UpdateBookCommand(booksService, id);
         return command.execute();
     }
 
     @DeleteMapping("/{id}")
-    public String deleteBook(@PathVariable String id) {
+    public String deleteBook(@PathVariable Long id) {
         Command<String> command = new DeleteBookCommand(booksService, id);
         return command.execute();
     }
