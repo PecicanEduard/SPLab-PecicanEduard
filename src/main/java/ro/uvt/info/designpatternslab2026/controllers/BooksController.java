@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.uvt.info.designpatternslab2026.Book;
 import ro.uvt.info.designpatternslab2026.commands.*;
+import ro.uvt.info.designpatternslab2026.observers.AllBooksSubject;
 import ro.uvt.info.designpatternslab2026.services.BooksService;
 
 import java.util.List;
@@ -17,11 +18,13 @@ import java.util.concurrent.Executors;
 public class BooksController {
 
     private final BooksService booksService;
+    private final AllBooksSubject allBooksSubject;
     private final ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     @Autowired
-    public BooksController(BooksService booksService) {
+    public BooksController(BooksService booksService, AllBooksSubject allBooksSubject) {
         this.booksService = booksService;
+        this.allBooksSubject = allBooksSubject;
     }
 
     @GetMapping
@@ -46,7 +49,8 @@ public class BooksController {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            command.execute();
+            Book book = command.execute();
+            allBooksSubject.add(book);
         });
 
         return new ResponseEntity<>("Request accepted. Processing in background...", HttpStatus.ACCEPTED);
